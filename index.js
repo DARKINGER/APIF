@@ -41,15 +41,28 @@ const con = {
 // app.use(morgan('combined', {stream: accesLogStream}));
 
 //referente a el swagger fuera de index.js
-const data = fs.readFileSync(path.join(__dirname,'./swagger.json'),{encoding:'utf8',flag:'r'})
-const read = fs.readFileSync(path.join(__dirname,'./README.md'),{encoding:'utf8',flag:'r'})
+// const data = fs.readFileSync(path.join(__dirname,'./swagger.json'),{encoding:'utf8',flag:'r'})
+// const read = fs.readFileSync(path.join(__dirname,'./README.md'),{encoding:'utf8',flag:'r'})
 
 // console.log(data)
-const defObj = JSON.parse(data);
-defObj.info.description = read;
-const swaggerOptions = {
-    definition:defObj,
-    "apis": [`${path.join(__dirname,"index.js")}`]
+// const defObj = JSON.parse(data);
+// defObj.info.description = read;
+// const swaggerOptions = {
+//     definition:defObj,
+//     "apis": [`${path.join(__dirname,"index.js")}`]
+// }
+
+swaggerOptions = {
+    definition: {
+        "openapi": "3.0.0",
+      "info": {
+        "title": "API Usuarios",
+        "version": "1.0.0"
+      },
+      "servers":[
+        {"url": "apif-production.up.railway.app"}
+        ]
+    }
 }
 
 app.use(express.json());
