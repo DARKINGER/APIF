@@ -12,5 +12,5 @@ const DATABASE = process.env.DB_DATABASE || 'hola'
 // export const HOST = process.env.HOST || 'localhost'
 
 module.exports = {
-    PORT, HOST, USER, PASSWORD, DATABASE
+    PORT, HOST, USER, PASSWORD, DATABASE, port
 }
