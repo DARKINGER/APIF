@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
-const {PORT, HOST, USER, PASSWORD, DATABASE} = require('./config');
+const {PORT, HOST, USER, PASSWORD, DATABASE, port} = require('./config');
 
 
 const swaggerUI = require('swagger-ui-express')
@@ -30,6 +30,7 @@ const options = {
 // };
 
 const con = {
+    port:PORT,
     host:HOST, 
     user:USER, 
     password:PASSWORD, 
@@ -291,8 +292,8 @@ app.get(
 );
 
 // Iniciar el servidor
-app.listen(PORT, ()=> {
-    console.log(`Server express escuchando en el puerto ${PORT}`);
+app.listen(port, ()=> {
+    console.log(`Server express escuchando en el puerto ${port}`);
 });
 
 
