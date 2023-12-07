@@ -83,6 +83,29 @@ const swaggerOptions = {
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+/**
+ * @swagger
+ * /info:
+ *   get:
+ *     summary: Obtiene información de la base de datos.
+ *     description: Endpoint para obtener información de la base de datos.
+ *     responses:
+ *       200:
+ *         description: Información de la base de datos obtenida correctamente.
+ *         content:
+ *           application/json:
+ *             example:
+ *               host: localhost
+ *               user: admin
+ *               password: Dima.zdla1
+ *               database: hola
+ *       500:
+ *         description: Error interno del servidor.
+ *         content:
+ *           application/json:
+ *             example:
+ *               mensaje: Mensaje de error específico.
+ */
 app.get("/info", async (req, res)=> {
     try {
         //const conn = await mysql.createConnection({host:'localhost', user:'admin', password:'Dima.zdla1', database:'hola'});
