@@ -66,20 +66,6 @@ const swaggerOptions = {
     "apis": [`${path.join(__dirname,"index.js")}`]
 }
 
-// swaggerOptions = {
-//     definition: {
-//         "openapi": "3.0.0",
-//       "info": {
-//         "title": "API Usuarios",
-//         "version": "1.0.0"
-//       },
-//       "servers":[
-//         {"url": "apif-production.up.railway.app"}
-//         ]
-//     },
-//     apis: [`${path.join(__dirname,'./index.js')}`]
-// }
-
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
@@ -256,7 +242,7 @@ app.post("/vehiculo", async(req, res)=> {
     try {
         const conn = await mysql.createConnection(con);
 
-        const [rows, fields] = await conn.query(`INSERT INTO vehiculos (nom_vehiculo, categoria) VALUES ("${req.query.nom_vehiculo}", ${req.query.categoria});`);
+        const [rows, fields] = await conn.query(`INSERT INTO vehiculos (nom_vehiculo, categoria) VALUES ("${req.body.nom_vehiculo}","${req.body.categoria}");`);
         res.json(rows);
     } catch(err) {
         res.json({mensaje: err.sqlMessage});
