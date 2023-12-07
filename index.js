@@ -312,6 +312,19 @@ app.put("/vehiculo/upload", async(req, res)=> {
     }
 });
 
+
+app.put("/vehiculo", async(req, res)=> {
+    try {
+        const conn = await mysql.createConnection(con);
+
+        const [rows, fields] = await conn.query(`UPDATE vehiculos SET nom_vehiculo = "${req.body.nom_vehiculo}", categoria ="${req.body.categoria}" WHERE id_vehiculo = ${req.body.id};`);
+        res.json(rows);
+    } catch(err) {
+        res.json({mensaje: err.sqlMessage});
+    }
+});
+
+
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
