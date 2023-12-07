@@ -6,7 +6,14 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
-const {PORT, HOST, USER, PASSWORD, DATABASE, port} = require('./config');
+// const {PORT, HOST, USER, PASSWORD, DATABASE, port} = require('./config');
+
+const port = process.env.PORT || 8085
+const host = process.env.host || 'localhost'
+const user = process.env.user || 'root'
+const password = process.env.password || 'Dima.zdla1'
+const database = process.env.database || 'hola'
+const dbport = process.env.dbport || 3306
 
 
 const swaggerUI = require('swagger-ui-express')
@@ -29,14 +36,21 @@ const options = {
 //     database:'vehiculos'
 // };
 
-const con = {
-    port:PORT,
-    host:HOST, 
-    user:USER, 
-    password:PASSWORD, 
-    database:DATABASE
-}
+// const con = {
+//     port:PORT,
+//     host:HOST, 
+//     user:USER, 
+//     password:PASSWORD, 
+//     database:DATABASE
+// }
 
+const con = {
+    port:dbport,
+    host:host, 
+    user:user, 
+    password:password, 
+    database:database
+}
 // var accesLogStream = fs.createWriteStream(path.join(__dirname, 'acces.Log'), {flags: 'a'});
 // app.use(morgan('combined', {stream: accesLogStream}));
 
